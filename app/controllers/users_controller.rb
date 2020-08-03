@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
-  get "/users/new" do
-    erb :"/users/new.html"
+  get '/signup' do
+    erb :"users/sign_up.html"
   end
 
   post "/users" do
