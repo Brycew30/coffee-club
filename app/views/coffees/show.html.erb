@@ -3,4 +3,10 @@
 <h2>Variety: </h2><h3><%= @coffee.variety %></h3>
 <h2>Notes: </h2><h3><%= @coffee.notes %></h3>
 <h2>Intensifier: </h2><h3><%= @coffee.intensifier %></h3>
-<a href="/coffees/<%= @coffee.id %>/edit">Edit</a>
+<p><a href="/coffees/<%= @coffee.id %>/edit">Edit</a></p>
+<p>
+<form action="/coffees/<%=@coffee.id%> method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
+</p>
