@@ -5,6 +5,10 @@ class CoffeesController < ApplicationController
       erb :"/coffees/index.html"
     end
 
+    get '/coffees/new' do
+      erb :'coffees/new.html'
+    end
+
     get '/coffees/:id' do
       @coffee = Coffee.find(params[:id])
       erb :"/coffees/show.html"
@@ -12,7 +16,17 @@ class CoffeesController < ApplicationController
 
     get '/coffees/:id/edit' do
       @coffee = Coffee.find(params[:id])
-      erb :"/coffess/edit.html"
+      erb :"/coffees/edit.html"
+    end
+
+    post '/coffees/:id' do
+      @coffee = Coffee.find(params[:id])
+      if @coffee.update(params)
+        redirect to "/coffees/#{@coffee.id}"
+      else
+        @error = @coffee.errors.full_messages.first
+        erb :'coffees/edit.html'
+      end
     end
 
 end

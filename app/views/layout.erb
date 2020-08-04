@@ -1,3 +1,5 @@
-<div><a href="/coffees">Home</a></div><br>
-
+<div><a href="/coffees">Home</a>  |  <a href="/coffees/new">New Coffee</a></div><br>
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
 <%= yield %>
