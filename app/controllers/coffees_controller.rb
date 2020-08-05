@@ -1,27 +1,35 @@
 class CoffeesController < ApplicationController
 
     get '/coffees' do
-      @coffees = Coffee.all
+      redirect_if_logged_out
+      @coffees = current_user.coffees
       erb :"/coffees/index.html"
     end
 
     get '/coffees/new' do
+      redirect_if_logged_out
       @coffee = Coffee.new
       erb :'coffees/new.html'
     end
 
     get '/coffees/:id' do
       @coffee = Coffee.find(params[:id])
+      if @coffee.user != current_user
+        redirect to '/coffees'
       erb :"/coffees/show.html"
     end
 
     get '/coffees/:id/edit' do
       @coffee = Coffee.find(params[:id])
-      erb :"/coffees/edit.html"
+      if @coffee.user == current_user
+        erb :"/coffees/edit.html"
+      else
+        redirect to '/coffees'
     end
 
     post '/coffees' do
-      @coffee = Coffee.new(params)
+      redirect_if_logged_out
+      @coffee = current_user.coffees.build(params)
       if @coffee.save
         redirect to "/coffees/#{@coffee.id}"
       else
@@ -33,7 +41,9 @@ class CoffeesController < ApplicationController
     patch '/coffees/:id' do
       @coffee = Coffee.find(params[:id])
       params.delete(:_method) #hidden input added _method key to params
-      if @coffee.update(params)
+      if @coffee.user != current_user
+        redirect to '/coffees'
+      elsif @coffee.update(params)
         redirect to "/coffees/#{@coffee.id}"
       else
         @error = @coffee.errors.full_messages.first
@@ -43,7 +53,7 @@ class CoffeesController < ApplicationController
 
     delete '/coffees/:id' do
       @coffee = Coffee.find(params[:id])
-      @coffee.destroy
+      @coffee.destroy if @coffee.user == current_user
       redirect to '/coffees'
     end
 

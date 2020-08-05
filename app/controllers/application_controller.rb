@@ -13,7 +13,13 @@ class ApplicationController < Sinatra::Base
     erb :"/index.html"
   end
 
-  helpers do
+  def redirect_if_logged_out
+    if !signed_in?
+      redirect to '/sessions/new'
+    end
+  end
+
+  helpers do #can be used inside Views as well
     def signed_in?
       !!session[:user_id]
     end
