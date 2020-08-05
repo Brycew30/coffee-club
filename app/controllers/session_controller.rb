@@ -4,5 +4,9 @@ class SessionController < ApplicationController
     erb :"sessions/login.html"
   end
 
+  delete '/sessions' do
+    session[:user_id] = nil
+  end
+
 
 end

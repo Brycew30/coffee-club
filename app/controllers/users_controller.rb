@@ -4,12 +4,19 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
-  get '/signup' do
-    erb :"users/sign_up.html"
+  get '/users/new' do
+    erb :"users/new.html"
   end
 
   post "/users" do
-    redirect "/users"
+    @user = User.new(params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect "/coffees"
+    else
+      @error = @user.errors.full_messages.first
+      erb :"users/new.html"
+    end
   end
 
   get "/users/:id" do
