@@ -1,5 +1,5 @@
 <div><a href="/coffees">Home</a> | <a href="/coffees/new">New Coffee</a>
-<% if signed_in?%>
+<% if logged_in?%>
 <form action='/sessions' method="POST">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Logout">

@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
-  get '/users/new' do
-    erb :"users/new.html"
+  get '/signup' do
+    erb :"users/signup.html"
   end
 
   post "/users" do
@@ -15,11 +15,12 @@ class UsersController < ApplicationController
       redirect "/coffees"
     else
       @error = @user.errors.full_messages.first
-      erb :"users/new.html"
+      erb :"users/signup.html"
     end
   end
 
   get "/users/:id" do
+    @user = User.find_by(username: params[:username])
     erb :"/users/show.html"
   end
 
