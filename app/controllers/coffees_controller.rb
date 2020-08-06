@@ -13,7 +13,7 @@ class CoffeesController < ApplicationController
     end
 
     get '/coffees/:id' do
-      @coffee = Coffee.find(params[:id])
+      set_coffee
       if @coffee.user != current_user
         redirect to '/coffees'
       end
@@ -21,7 +21,7 @@ class CoffeesController < ApplicationController
     end
 
     get '/coffees/:id/edit' do
-      @coffee = Coffee.find(params[:id])
+      set_coffee
       if @coffee.user == current_user
         erb :"/coffees/edit.html"
       else
@@ -41,7 +41,7 @@ class CoffeesController < ApplicationController
     end
 
     patch '/coffees/:id' do
-      @coffee = Coffee.find(params[:id])
+      set_coffee
       params.delete(:_method) #hidden input added _method key to params
       if @coffee.user != current_user
         redirect to '/coffees'
@@ -54,9 +54,15 @@ class CoffeesController < ApplicationController
     end
 
     delete '/coffees/:id' do
-      @coffee = Coffee.find(params[:id])
+      set_coffee
       @coffee.destroy if @coffee.user == current_user
       redirect to '/coffees'
+    end
+
+    private
+
+    def set_coffee
+      @coffee = Coffee.find(params[:id])
     end
 
 end

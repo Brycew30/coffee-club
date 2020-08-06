@@ -1,11 +1,12 @@
-<div><a href="/">Home</a> | <a href="/coffees/new">New Coffee</a>
+<div><a href="/">Home</a> |
 <% if logged_in?%>
+ <a href="/coffees/new">Add New Coffee</a>
 <form action='/sessions' method="POST">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Logout">
 </form>
 <% else %>
-| <a href="/login">Log In</a>
+<a href="/login">Log In</a>
 <% end %>
 </div><br>
 <% if @error %>
