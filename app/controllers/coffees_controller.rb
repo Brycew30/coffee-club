@@ -53,7 +53,7 @@ class CoffeesController < ApplicationController
       end
     end
 
-    delete '/coffees/:id' do
+    delete '/coffees/:id/delete' do
       redirect_if_logged_out
       set_coffee
       @coffee.destroy if @coffee.user == current_user

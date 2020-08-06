@@ -7,7 +7,7 @@
 <h4>Created At: </h4><h5><%= @coffee.created_at %></h5>
 <p><a href="/coffees/<%= @coffee.id %>/edit">Edit</a></p>
 <p>
-<form action="/coffees/<%=@coffee.id%> method="POST">
+<form action="/coffees/<%=@coffee.id%>/delete" method="POST">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
