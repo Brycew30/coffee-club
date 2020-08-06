@@ -1,5 +1,5 @@
 <h1>Hey, <%=current_user.name%>!</h1>
-<h2>Here are your coffees:</h2>
+<h2>Check out these Coffee Club coffees:</h2>
 <% @coffees.each do |c| %>
   <a href="/coffees/<%= c.id %>"><%= c.name %></a><br>
 <% end %>

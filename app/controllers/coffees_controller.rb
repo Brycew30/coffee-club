@@ -2,7 +2,7 @@ class CoffeesController < ApplicationController
 
     get '/coffees' do
       redirect_if_logged_out
-      @coffees = current_user.coffees
+      @coffees = Coffee.all
       erb :"/coffees/index.html"
     end
 
@@ -15,9 +15,6 @@ class CoffeesController < ApplicationController
     get '/coffees/:id' do
       redirect_if_logged_out
       set_coffee
-      if @coffee.user != current_user
-        redirect to '/coffees'
-      end
       erb :"/coffees/show.html"
     end
 
