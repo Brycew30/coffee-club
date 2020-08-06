@@ -13,6 +13,7 @@ class CoffeesController < ApplicationController
     end
 
     get '/coffees/:id' do
+      redirect_if_logged_out
       set_coffee
       if @coffee.user != current_user
         redirect to '/coffees'
@@ -21,6 +22,7 @@ class CoffeesController < ApplicationController
     end
 
     get '/coffees/:id/edit' do
+      redirect_if_logged_out
       set_coffee
       if @coffee.user == current_user
         erb :"/coffees/edit.html"
@@ -41,6 +43,7 @@ class CoffeesController < ApplicationController
     end
 
     patch '/coffees/:id' do
+      redirect_if_logged_out
       set_coffee
       params.delete(:_method) #hidden input added _method key to params
       if @coffee.user != current_user
@@ -54,6 +57,7 @@ class CoffeesController < ApplicationController
     end
 
     delete '/coffees/:id' do
+      redirect_if_logged_out
       set_coffee
       @coffee.destroy if @coffee.user == current_user
       redirect to '/coffees'
