@@ -14,13 +14,13 @@ class ApplicationController < Sinatra::Base
   end
 
   def redirect_if_logged_out
-    if !signed_in?
-      redirect to '/sessions/new'
+    if !logged_in?
+      redirect to '/login'
     end
   end
 
   helpers do #can be used inside Views as well
-    def signed_in?
+    def logged_in?
       !!session[:user_id]
     end
 

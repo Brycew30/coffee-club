@@ -16,6 +16,7 @@ class CoffeesController < ApplicationController
       @coffee = Coffee.find(params[:id])
       if @coffee.user != current_user
         redirect to '/coffees'
+      end
       erb :"/coffees/show.html"
     end
 
@@ -25,6 +26,7 @@ class CoffeesController < ApplicationController
         erb :"/coffees/edit.html"
       else
         redirect to '/coffees'
+      end
     end
 
     post '/coffees' do
