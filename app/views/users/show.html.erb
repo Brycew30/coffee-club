@@ -1,1 +1,6 @@
-<h1>This is <%=@user.name%>'s show page.</h1>
+<h1>Check out <%=@user.name%>'s coffees.</h1>
+<% @coffees.each do |c| %>
+  <% if c.user_id == @user.id %>
+  <a href="/coffees/<%= c.id %>"><%= c.name %></a><br>
+  <% end %>
+<% end %>

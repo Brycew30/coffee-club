@@ -1,1 +1,4 @@
-<h1>This is the Model's index page.</h1>
+<h1>Check out other Coffee Club members!</h1>
+<% @users.each do |u| %>
+  <a href="/coffees/<%= u.id %>"><%= u.name %></a><br>
+<% end %>
