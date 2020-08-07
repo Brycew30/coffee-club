@@ -32,9 +32,10 @@ class CoffeesController < ApplicationController
       redirect_if_logged_out
       @coffee = current_user.coffees.build(params)
       if @coffee.save
+        flash.next[:message] = "Your coffee was successfully added to the list!"
         redirect to "/coffees/#{@coffee.id}"
       else
-        @error = @coffee.errors.full_messages.first
+        flash.now[:error] = "Invalid input. Make sure all fields are completed."
         erb :"coffees/new.html"
       end
     end

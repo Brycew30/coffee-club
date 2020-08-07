@@ -6,16 +6,22 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-    erb :"users/signup.html"
+    if logged_in?
+      redirect to '/coffees'
+    else
+      erb :"users/signup.html"
+    end
   end
 
-  post "/users" do
-    @user = User.new(params)
-    if @user.save
+  post "/signup" do
+    if params[:name] != "" && params[:username] != "" && params[:password] != ""
+      @user = User.new(params)
+      @user.save
       session[:user_id] = @user.id
+      flash.next[:message] = "Welcome to Coffee Club, #{@user.name}!"
       redirect "/coffees"
     else
-      @error = @user.errors.full_messages.first
+      flash.now[:error] = "Invalid input. Please make sure all fields are completed."
       erb :"users/signup.html"
     end
   end

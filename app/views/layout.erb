@@ -9,7 +9,9 @@
 </form>
 <% end %>
 </div><br>
-<% if @error %>
-  <p><%= @error %></p>
+<% if flash[:message] %>
+  <p><%= flash[:message] %></p>
+<% elsif flash[:error] %>
+  <p><%= flash[:error] %></p>
 <% end %>
 <%= yield %>

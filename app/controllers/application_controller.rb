@@ -6,7 +6,8 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "change_this_later"
+    set :session_secret, "random_assortment_of_characters"
+    register Sinatra::Flash #adds flash hash where key of message can be created and set
   end
 
   get "/" do
