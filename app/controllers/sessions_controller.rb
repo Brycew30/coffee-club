@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect to '/coffees'
     else
       flash.next[:error] = "Login failed. Please try again."
-      redirect to 'sessions/login.html'
+      redirect to '/login'
     end
   end
 

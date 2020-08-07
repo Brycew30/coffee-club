@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   get "/users" do
+    redirect_if_logged_out
     @users = User.all
     erb :"/users/index.html"
   end
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect to '/coffees'
     else
-      erb :"users/signup.html"
+      erb :"/users/signup.html"
     end
   end
 
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:id" do
+    redirect_if_logged_out
     @user = User.find_by(id: params[:id])
     @coffees = Coffee.all
     erb :"/users/show.html"

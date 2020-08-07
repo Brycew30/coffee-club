@@ -20,7 +20,8 @@ class ApplicationController < Sinatra::Base
 
   def redirect_if_logged_out
     if !logged_in?
-      redirect to '/login'
+      flash.next[:error] = "Please login or signup to view that content."
+      redirect to '/'
     end
   end
 
