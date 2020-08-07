@@ -1,4 +1,4 @@
-<h1>Check out other Coffee Club members!</h1>
+<h1>See other Coffee Club members!</h1>
 <% @users.each do |u| %>
-  <a href="/coffees/<%= u.id %>"><%= u.name %></a><br>
+  <a href="/users/<%= u.id %>"><%= u.name %></a><br>
 <% end %>
