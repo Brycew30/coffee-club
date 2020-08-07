@@ -24,6 +24,7 @@ class CoffeesController < ApplicationController
       if @coffee.user == current_user
         erb :"/coffees/edit.html"
       else
+        flash.next[:error] = "You don't have permission to edit that coffee."
         redirect to '/coffees'
       end
     end
@@ -47,9 +48,10 @@ class CoffeesController < ApplicationController
       if @coffee.user != current_user
         redirect to '/coffees'
       elsif @coffee.update(params)
+        flash.next[:message] = "Your coffee was successfully updated!"
         redirect to "/coffees/#{@coffee.id}"
       else
-        @error = @coffee.errors.full_messages.first
+        flash.next[:error] = "Please make sure all fields are filled."
         erb :'coffees/edit.html'
       end
     end

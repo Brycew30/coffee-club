@@ -1,7 +1,12 @@
 class SessionsController < ApplicationController
 
   get '/login' do
-    erb :"sessions/login.html"
+    if logged_in?
+      flash.next[:message] = "#{current_user.name}, you're already logged in!"
+      redirect to '/coffees'
+    else
+      erb :"sessions/login.html"
+    end
   end
 
   post '/login' do
@@ -10,8 +15,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect to '/coffees'
     else
-      @error = "Username or password is incorrect"
-      erb :'sessions/login.html'
+      flash.next[:error] = "Login failed. Please try again."
+      redirect to 'sessions/login.html'
     end
   end
 
