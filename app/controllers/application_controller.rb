@@ -18,14 +18,9 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  def redirect_if_logged_out
-    if !logged_in?
-      flash.next[:error] = "Please login or signup to view that content."
-      redirect to '/'
-    end
-  end
 
   helpers do #can be used inside Views as well
+
     def logged_in?
       !!session[:user_id]
     end
@@ -33,6 +28,14 @@ class ApplicationController < Sinatra::Base
     def current_user
       @user ||= User.find(session[:user_id]) #memoization
     end
+
+    def redirect_if_logged_out
+      if !logged_in?
+        flash.next[:error] = "Please login or signup to view that content."
+        redirect to '/'
+      end
+    end
+
   end
 
 end

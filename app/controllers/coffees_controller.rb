@@ -36,7 +36,7 @@ class CoffeesController < ApplicationController
         flash.next[:message] = "Your coffee was successfully added to the list!"
         redirect to "/coffees/#{@coffee.id}"
       else
-        flash.now[:error] = "Invalid input. Make sure all fields are completed."
+        flash.now[:error] = "Unable to create coffee: #{@coffee.errors.full_messages.to_sentence}."
         erb :"coffees/new.html"
       end
     end
@@ -51,7 +51,7 @@ class CoffeesController < ApplicationController
         flash.next[:message] = "Your coffee was successfully updated!"
         redirect to "/coffees/#{@coffee.id}"
       else
-        flash.next[:error] = "Please make sure all fields are filled."
+        flash.next[:error] = "Unable to update coffee: #{@coffee.errors.full_messages.to_sentence}."
         erb :'coffees/edit.html'
       end
     end

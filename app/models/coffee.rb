@@ -1,6 +1,6 @@
 class Coffee < ActiveRecord::Base
 
   belongs_to :user
-  validates_presence_of :name, :origin
+  validates :name, :origin, :variety, :notes, :intensifier, presence: true
 
 end
