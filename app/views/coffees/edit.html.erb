@@ -10,5 +10,7 @@
   <textarea id="notes" name="notes"><%=@coffee.notes%></textarea><br>
   <label for="intensifier">Intensifier</label><br>
   <input id="intensifier" type=text name="intensifier" value="<%=@coffee.intensifier%>"><br>
+  <label for="rating">Rate this Coffee (1-10)</label><br>
+  <input id="rating" type="number" min="1" max="10" name="rating" value="<%=@coffee.rating%>"><br>
   <input id="submit" type=submit>
 </form>
