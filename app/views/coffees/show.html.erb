@@ -5,6 +5,7 @@
 <h2>Intensifiers: </h2><h3><%= @coffee.intensifier %></h3>
 <h2>Created By: </h2><h3><%= @coffee.user.name %></h3>
 <h2><%= @coffee.user.name %>'s rating (out of 10) for this coffee: </h2><h3><%= @coffee.rating %></h3>
+<p>Created On: <%= @coffee.formatted_created_at %></p>
 <% if current_user == @coffee.user %>
 <br>
 <p><a href="/coffees/<%= @coffee.id %>/edit">Edit Coffee</a></p>
