@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
 
   has_secure_password
+
   has_many :coffees
-  validates_presence_of :name, :username, :password
+
+  validates :name, :username, presence: true
+  validates :username, uniqueness: true
 
 end

@@ -15,14 +15,13 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do
-    if params[:name] != "" && params[:username] != "" && params[:password] != ""
-      @user = User.new(params)
-      @user.save
+    @user = User.new(params)
+    if @user.save
       session[:user_id] = @user.id
-      flash.next[:message] = "Hey, #{@user.name}! Your account was successfully created!"
+      flash.next[:message] = "#{@user.name}, you successfully created an account! Welcome to Coffee Club!"
       redirect "/coffees"
     else
-      flash.now[:error] = "Invalid input. Please make sure all fields are completed."
+      flash.now[:error] = "Unable to create account: #{@user.errors.full_messages.to_sentence}."
       erb :"users/signup.html"
     end
   end
