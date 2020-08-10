@@ -60,6 +60,7 @@ class CoffeesController < ApplicationController
       redirect_if_logged_out
       set_coffee
       @coffee.destroy if @coffee.user == current_user
+      flash.next[:message] = "Your coffee was successfully deleted from the list."
       redirect to '/coffees'
     end
 

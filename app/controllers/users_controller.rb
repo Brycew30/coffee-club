@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       @user = User.new(params)
       @user.save
       session[:user_id] = @user.id
-      flash.next[:message] = "Welcome to Coffee Club, #{@user.name}!"
+      flash.next[:message] = "Hey, #{@user.name}! Your account was successfully created!"
       redirect "/coffees"
     else
       flash.now[:error] = "Invalid input. Please make sure all fields are completed."

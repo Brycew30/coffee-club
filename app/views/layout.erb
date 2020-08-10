@@ -12,8 +12,8 @@
 <% end %>
 </div><br>
 <% if flash[:message] %>
-  <p><%= flash[:message] %></p>
+  <p style="color: green;"><%= flash[:message] %></p>
 <% elsif flash[:error] %>
-  <p><%= flash[:error] %></p>
+  <p style="color: red;"><%= flash[:error] %></p>
 <% end %>
 <%= yield %>
