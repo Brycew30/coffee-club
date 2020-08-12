@@ -1,19 +1,54 @@
-<% if logged_in?%>
-<div>
-<a href="/coffees">Coffee List</a> |
-<a href="/users/<%=current_user.id%>">My Coffees</a> |
-<a href="/coffees/new">Add New Coffee</a> |
-<a href="/users">Member List</a>
-<br>
-<form action='/sessions' method="POST">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="Logout">
-</form>
-<% end %>
-</div><br>
-<% if flash[:message] %>
-  <p style="color: green;"><%= flash[:message] %></p>
-<% elsif flash[:error] %>
-  <p style="color: red;"><%= flash[:error] %></p>
-<% end %>
-<%= yield %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coffee Club</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  </head>
+  <body>
+    <section class="hero is-half background is-black">
+      <div class="hero-body">
+        <h1 class="title">
+          Hello World
+        </h1>
+        <p class="subtitle">
+          My first website with <strong>Bulma</strong>!
+        </p>
+      </div>
+    </section>
+
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          img
+        </div>
+
+        <div class="navbar-end">
+          <% if logged_in?%>
+          <a class="navbar-item" href="/coffees">
+            Coffee List
+            </a>
+          <a class="navbar-item" href="/users/<%=current_user.id%>">
+            My Coffees
+            </a>
+          <a class="navbar-item" href="/coffees/new">
+            Add New Coffee
+            </a>
+          <a class="navbar-item" href="/users">
+            Member List
+            </a>
+          <a class="navbar-item" href="/logout">
+            Logout
+            </a>
+          <% end %>
+        </div>
+      </nav>
+        <% if flash[:message] %>
+          <p style="color: green;"><%= flash[:message] %></p>
+        <% elsif flash[:error] %>
+          <p style="color: red;"><%= flash[:error] %></p>
+        <% end %>
+    <%= yield %>
+  </body>
+</html>
