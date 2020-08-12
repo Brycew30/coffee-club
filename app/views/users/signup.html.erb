@@ -1,8 +1,46 @@
-<h1>Sign Up</h1>
-<form action="/signup" method="POST">
-<div>
-<label for="name">Name:</label>
-<input type="text" name="name" id="name" />
+<div class="columns">
+  <div class="column is-one-third is-offset-one-third">
+    <h1 class="title">Sign Up</h1>
+    <form action="/signup" method="POST">
+      <div class="field">
+        <label class="label" for="name">Name:</label>
+        <div class="control">
+          <input class="input" type="text" name="name" id="name" placeholder="e.g Hello"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="username">Username:</label>
+        <div class="control">
+          <input class="input" type="text" name="username" id="username" placeholder="e.g HelloWorld"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="password">Password:</label>
+        <div class="control">
+          <input class="input" type="password" name="password" id="password" />
+        </div>
+      </div>
+
+      <div class="buttons is-right">
+        <p class="control">
+          <button class="button is-success">
+            Sign Up
+          </button>
+        </p>
+      </div>
+
+    </form>
+    <br>
+    <div class="buttons is-left">
+    <a class="button is-info is-outlined align-right" href="/">Back</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div>
 <br>
 <label for="username">Username:</label>
 <input type="text" name="username" id="username" />
@@ -13,5 +51,4 @@
 <input type="submit" value="Create New Account" id="name" />
 </div>
 </form>
-<br>
-<a class="button is-info is-outlined back" href="/">Back</a>
+<br> -->
