@@ -1,5 +1,9 @@
-<h1>Hey, <%=current_user.name%>!</h1>
-<h2>Check out these Coffee Club coffees:</h2>
-<% @coffees.each do |c| %>
-  <a href="/coffees/<%= c.id %>"><%= c.name %></a><br>
-<% end %>
+<div class="columns">
+  <div class="column is-8 is-offset-3">
+    <h3 class="title is-3 centered">Hey, <%=current_user.name%>!</h3>
+    <h4 class="subtitle is-4 centered">Check out these Coffee Club coffees:</h4>
+    <% @coffees.each do |c| %>
+      <h4 class="subtitle is-5"><a href="/coffees/<%= c.id %>"><%= c.name %></a></h4>
+      <% end %>
+  </div>
+</div>

@@ -1,4 +1,9 @@
-<h1>See other Coffee Club members!</h1>
-<% @users.each do |u| %>
-  <a href="/users/<%= u.id %>"><%= u.name %></a><br>
-<% end %>
+<div class="columns">
+  <div class="column is-8 is-offset-3">
+    <h3 class="title is-3 centered">See other Coffee Club members!</h3>
+    <br>
+    <% @users.each do |u| %>
+    <h4 class="subtitle is-5"><a href="/users/<%= u.id %>"><%= u.name %></a></h4>
+    <% end %>
+  </div>
+</div>

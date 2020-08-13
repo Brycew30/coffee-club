@@ -1,6 +1,11 @@
-<h1>Check out <%=@user.name%>'s coffees.</h1>
-<% @coffees.each do |c| %>
-  <% if c.user_id == @user.id %>
-  <a href="/coffees/<%= c.id %>"><%= c.name %></a><br>
-  <% end %>
-<% end %>
+<div class="columns">
+  <div class="column is-8 is-offset-3">
+    <h3 class="title is-3 centered">Check out <%=@user.name%>'s coffees:</h3>
+    <br>
+    <% @coffees.each do |c| %>
+    <% if c.user_id == @user.id %>
+      <h4 class="subtitle is-5"><a href="/coffees/<%= c.id %>"><%= c.name %></a></h4>
+      <% end %>
+    <% end %>
+  </div>
+</div>

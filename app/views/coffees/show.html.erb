@@ -1,18 +1,24 @@
-<h1><%= @coffee.name %></h1>
-<h2>Origin: </h2><h3><%= @coffee.origin %></h3>
-<h2>Variety: </h2><h3><%= @coffee.variety %></h3>
-<h2>Notes: </h2><h3><%= @coffee.notes %></h3>
-<h2>Intensifiers: </h2><h3><%= @coffee.intensifier %></h3>
-<h2>Created By: </h2><h3><%= @coffee.user.name %></h3>
-<h2><%= @coffee.user.name %>'s rating (out of 10) for this coffee: </h2><h3><%= @coffee.rating %></h3>
-<p>Created On: <%= @coffee.formatted_created_at %></p>
-<% if current_user == @coffee.user %>
-<br>
-<p><a href="/coffees/<%= @coffee.id %>/edit">Edit Coffee</a></p>
-<p>
-<form action="/coffees/<%=@coffee.id%>" method="POST">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete this Coffee">
-</form>
-</p>
-<% end %>
+<div class="columns">
+  <div class="column is-8 is-offset-2">
+    <h3 class="title is-3"><%= @coffee.name %></h3>
+    <h4 class="subtitle is-4"><strong>Origin:</strong> <%= @coffee.origin %></h4>
+    <h4 class="subtitle is-4"><strong>Variety:</strong> <%= @coffee.variety %></h4>
+    <h4 class="subtitle is-4"><strong>Notes:</strong> <%= @coffee.notes %></h4>
+    <h4 class="subtitle is-4"><strong>Intensifiers:</strong> <%= @coffee.intensifier %></h4>
+    <h4 class="subtitle is-4"><strong>Created By:</strong> <%= @coffee.user.name %></h4>
+    <h4 class="subtitle is-4"><strong><%= @coffee.user.name %>'s rating (out of 10) for this coffee:</strong> <%= @coffee.rating %></h4>
+    <h5 class="subtitle is-5"><strong>Created On:</strong>  <%= @coffee.formatted_created_at %></h5>
+    <br>
+    <% if current_user == @coffee.user %>
+    <div class="buttons are-medium">
+      <a class="button is-info" href="/coffees/<%= @coffee.id %>/edit">
+        Edit Coffee
+      </a>
+      <form action="/coffees/<%=@coffee.id%>" method="POST">
+        <input type="hidden" name="_method" value="delete">
+        <input class="button is-danger" type="submit" value="Delete this Coffee">
+      </form>
+    </div>
+    <% end %>
+  </div>
+</div>
