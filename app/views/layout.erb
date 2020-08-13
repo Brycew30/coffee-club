@@ -20,9 +20,9 @@
     </section>
 
 <% if flash[:message] %>
-  <p style="color: green;"><%= flash[:message] %></p>
+  <div class="notification is-success"><%= flash[:message] %></div>
 <% elsif flash[:error] %>
-  <p style="color: red;"><%= flash[:error] %></p>
+  <div class="notification is-danger"><%= flash[:error] %></div>
 <% end %>
 
       <nav class="navbar" role="navigation" aria-label="main navigation">
