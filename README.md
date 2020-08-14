@@ -19,9 +19,9 @@ Coffee Club allows users to:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Brycew30/coffee-club. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](/coffee-club/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/Brycew30/coffee-club. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Code Of Conduct.
 
 
 ## License
 
-Open source under the terms of the [MIT License](/coffee-club/LICENSE).
+Open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
