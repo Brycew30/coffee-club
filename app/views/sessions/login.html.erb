@@ -1,14 +1,30 @@
-<h1>Login</h1>
-<form action="/login" method="POST">
-<div>
-<label for="username">Username:</label>
-<input type="text" name="username" id="username" />
-<br>
-<label for="password">Password:</label>
-<input type="password" name="password" id="password" />
-<br>
-<input type="submit" value="Login" id="name" />
+<div class="columns">
+  <div class="column is-one-third is-offset-one-third">
+    <h1 class="title">Login</h1>
+    <form action="/login" method="POST">
+    <div class="field">
+      <label class="label" for="username">Username:</label>
+      <div class="control">
+        <input class="input" type="text" name="username" id="username" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="password">Password:</label>
+      <div class="control">
+        <input class="input" type="password" name="password" id="password" />
+      </div>
+    </div>
+
+    <div class="buttons is-right">
+      <a href="/" class="button is-info is-outlined" type="submit">
+        Back
+      </a>
+      <button class="button is-success">
+      Login
+      </button>
+    </div>
+    
+  </form>
+  </div>
 </div>
-</form>
-<br>
-<a href="/">Back</a>
