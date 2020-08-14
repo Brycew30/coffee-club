@@ -10,7 +10,7 @@
     <h5 class="subtitle is-5"><strong>Created On:</strong>  <%= @coffee.formatted_created_at %></h5>
     <br>
     <% if current_user == @coffee.user %>
-    <div class="buttons are-medium">
+    <div class="buttons">
       <a class="button is-info" href="/coffees/<%= @coffee.id %>/edit">
         Edit Coffee
       </a>
