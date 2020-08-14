@@ -8,16 +8,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   </head>
   <body>
-    <section class="hero is-half background is-black">
-      <div class="hero-body">
-        <h1 class="title">
-          Hello World
-        </h1>
-        <p class="subtitle">
-          My first website with <strong>Bulma</strong>!
-        </p>
-      </div>
-    </section>
 
 <% if flash[:message] %>
   <div class="notification is-success"><%= flash[:message] %></div>
@@ -25,9 +15,11 @@
   <div class="notification is-danger"><%= flash[:error] %></div>
 <% end %>
 
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          img
+          <a class="navbar-item" href="/coffees">
+            <i class="fas fa-coffee"></i>
+          </a>
         </div>
 
         <div class="navbar-end">
@@ -51,5 +43,12 @@
         </div>
       </nav>
     <%= yield %>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Coffee Club</strong> by <a href="https://github.com/Brycew30/">Bryce Whittington</a>
+          </p>
+        </div>
+      </footer>
   </body>
 </html>
