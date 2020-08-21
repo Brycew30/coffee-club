@@ -36,6 +36,13 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    def check_correct_user
+      if @coffee.user != current_user
+        flash.next[:error] = "You don't have permission to edit that coffee."
+        redirect to '/coffees'
+      end
+    end
+
   end
 
 end

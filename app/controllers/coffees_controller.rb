@@ -21,12 +21,8 @@ class CoffeesController < ApplicationController
     get '/coffees/:id/edit' do
       redirect_if_logged_out
       set_coffee
-      if @coffee.user == current_user
+      check_correct_user
         erb :"/coffees/edit.html"
-      else
-        flash.next[:error] = "You don't have permission to edit that coffee."
-        redirect to '/coffees'
-      end
     end
 
     post '/coffees' do
@@ -45,9 +41,8 @@ class CoffeesController < ApplicationController
       redirect_if_logged_out
       set_coffee
       params.delete(:_method) #hidden input added _method key to params
-      if @coffee.user != current_user
-        redirect to '/coffees'
-      elsif @coffee.update(params)
+      check_correct_user
+      if @coffee.update(params)
         flash.next[:message] = "Your coffee was successfully updated!"
         redirect to "/coffees/#{@coffee.id}"
       else
